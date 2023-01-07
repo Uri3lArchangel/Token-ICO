@@ -36,7 +36,7 @@ tokenNumber=e.target.value
       setTokensSold(await soldTokens())
       setPrice(await salePrice())
     }
-  }, [acc])
+  }, [])
   
   return (
     <div>
