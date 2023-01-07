@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@keyframes logo {
+    from{
+        background-color:#22d3ee ;
+        opacity: 1;
+        transform: rotateY(0deg);
+        
+    }to{
+        background-color: #00909955;
+        opacity: 0.7;
+        transform: rotateY(360deg);
+    }
+}
+
+.section1{
+    background-image: url(../components/Images/bg5.png);
+    background-size: 200% 100%;
+    height: 100vh;
+    overflow: scroll;
+    filter: brightness(1.2);
+}
+progress{
+    background-color: #000;
+}
+progress::-webkit-progress-bar{
+    background-color: #000;
+
+}
+progress::-webkit-progress-value{
+    border-radius: 40px;
+    background-image: linear-gradient(to left,white,30%,cyan,80%,blue);
+
+
+}
+progress::-moz-progress-bar{
+    background-image: linear-gradient(to left,white,30%,cyan,80%,blue);
+    border-radius: 40px;
+
+}
+#myChart{
+    width: 300;
+    height: 400;
+}.canvasDiv{
+    height: 100vh;
+    width: fit-content;
+    margin: auto;
+    overflow: scroll;
+    padding-top: 60px;
+}
+.canvasDiv canvas{
+    height: 100%;
+}
+.address{
+    color: white;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
+}
+.addressToken{
+    text-overflow: ellipsis;
+    color: white;
+    text-align: center;
+    line-break:anywhere;
+    margin-top: 15px
+
+}
+
+@media screen and (min-width:350px) {
+    
+    .nav{
+        padding: 6px 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        max-width: 96%;
+        margin: auto;
+    }
+   
+}
+@media screen and (min-width:620px) {
+    .nav{
+        max-width: 90%;
+    }
+    .section1{
+        background-size: 140% 100%;
+    }
+    .section1Text{
+        max-width: 90%;
+        margin: auto;
+        margin-top: 95px;
+    }
+    .section1Text p{
+        max-width: 40%;
+    }
+    .imageDiv{
+        display: block;
+        right: 5%;
+        animation-name: logo;
+        animation-duration: 7s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        width: 100px;
+        height: 100px;
+        animation-direction: alternate;
+    }.section1Text input,.section1Text button{
+        width: 60%;
+        height: 44px;
+    }.progressFooter button{
+        width: 40%;
+    }
+
+}
+@media screen and (min-width:1024px) {
+    .section1Text input,.section1Text button{
+        width: 30%;
+        height: 44px;
+    }
+    .nav{
+        max-width: 80%;
+        margin-top: 60px;
+    }.nav li:nth-child(1){
+        font-size: 2rem;
+    }
+    .nav li:nth-child(2){
+        font-size: 1.3rem;
+    }
+    .nav li button{
+        font-size: 1.2rem;
+        padding: 18px 25px;
+    }
+    .section1{
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: scroll;
+    }
+    .section1Text{
+        max-width: 80%;
+        margin: auto;
+        margin-top: 95px;
+    }.section1Text h1{
+        font-size: 2.2rem;
+        line-height: 56px;
+    }
+    .section1Text p{
+        max-width: 30%;
+        margin-bottom: 100px;
+        line-height: 30px;
+    }.imageDiv{
+        width: 200px;
+        height: 200px;
+    }
+    .progressFooter button{
+        width: 20%;
+    }
+}
+@media screen and (min-width:1480px) {
+    .section1{
+     background-size: 100% 140%;
+
+    }
+}
