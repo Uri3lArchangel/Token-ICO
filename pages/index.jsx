@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Section1 from '../components/Frontend/Pages/Home'
 import Section2 from '../components/Frontend/Pages/Section2'
 import {connect, fetchIcoBalance,fetchUserBalance,buyTokens,salePrice,soldTokens} from '../components/Backend/Funtions/web3Functions'
-import { useEffect, useState,createContext } from 'react'
+import { useEffect, useState,createContext, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 
@@ -14,17 +14,19 @@ const [myBalance,setBalance]=useState(0)
 const [icoBalance,setIcoBlanace]=useState(0)
 const [tokensSold,setTokensSold]=useState(0)
 const [price,setPrice]=useState(0)
-let tokenNumber=0
+const [loadingBuy,setLoading]=useState(false)
+let tokenNumberRef = useRef()
 
 async function buy(){
  let _price=await salePrice()
-  await buyTokens(tokenNumber,_price)
+//  alert(`${tokenNumberRef.current.value} and ${_price}`)
+  setLoading(true)
+  await buyTokens(tokenNumberRef.current.value,_price)
+  setLoading(false)
   router.push('/')
 
 }
-function change(e){
-tokenNumber=e.target.value
-}
+
   useEffect(() => {
     
   
@@ -34,9 +36,9 @@ tokenNumber=e.target.value
       setBalance(await fetchUserBalance())
       setIcoBlanace(await fetchIcoBalance())
       setTokensSold(await soldTokens())
-      setPrice(await salePrice())
+      setPrice(await salePrice()) 
     }
-  }, [])
+  }, [acc])
   
   return (
     <div>
@@ -44,7 +46,7 @@ tokenNumber=e.target.value
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Section1 price={price} sold={tokensSold} change={change} buy={buy} icoBalance={icoBalance} connect={connect} address={acc} myTokens={myBalance} /> 
+      <Section1 load={loadingBuy} tokenRef={tokenNumberRef} price={price} sold={tokensSold}  buy={buy} icoBalance={icoBalance} connect={connect} address={acc} myTokens={myBalance} /> 
     </div>
   )
 }
