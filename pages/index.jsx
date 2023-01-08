@@ -39,7 +39,7 @@ async function buy(){
       console.log('effect')
       setPrice(await salePrice()) 
     }
-  })
+  },[])
   
   return (
     <div>
