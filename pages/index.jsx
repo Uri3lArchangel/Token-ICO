@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Section1 from '../components/Frontend/Pages/Home'
-import Section2 from '../components/Frontend/Pages/Section2'
 import {connect, fetchIcoBalance,fetchUserBalance,buyTokens,salePrice,soldTokens} from '../components/Backend/Funtions/web3Functions'
-import { useEffect, useState,createContext, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 
@@ -39,7 +37,7 @@ async function buy(){
       console.log('effect')
       setPrice(await salePrice()) 
     }
-  },[])
+  },[acc])
   
   return (
     <div>
