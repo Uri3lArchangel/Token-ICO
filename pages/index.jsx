@@ -36,6 +36,7 @@ async function buy(){
       setBalance(await fetchUserBalance())
       setIcoBlanace(await fetchIcoBalance())
       setTokensSold(await soldTokens())
+      console.log('effect')
       setPrice(await salePrice()) 
     }
   }, [acc])
