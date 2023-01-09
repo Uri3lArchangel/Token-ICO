@@ -7,7 +7,6 @@ import {tokenAddress} from '../../Backend/Funtions/web3Functions'
 
 function Header(props) {
   const router = useRouter()
-  console.log("price",props.price)
   function stats(){
     router.push('Stats')
   }

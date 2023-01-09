@@ -1,8 +1,8 @@
 import Web3 from "web3";
 import tokenabi from '../Truffle/build/contracts/Token.json'
 import icoabi from '../Truffle/build/contracts/ICO.json'
-let infuraurl='https://goerli.infura.io/v3/011b1e17991746548b8fc0eac345158e'
 let icoAddress = '0x3Ed4125dB2dCC0507370C3e4E61B134DF628DAE7'
+let infuraurl=process.env.infuraurl
 export let tokenAddress = '0x8a3E336Ec3181511563b063BFC68ED6a5dCB343C'
 
 const web3 = new Web3(Web3.givenProvider || infuraurl)

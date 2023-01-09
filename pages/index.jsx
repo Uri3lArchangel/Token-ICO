@@ -17,7 +17,6 @@ let tokenNumberRef = useRef()
 
 async function buy(){
  let _price=await salePrice()
-//  alert(`${tokenNumberRef.current.value} and ${_price}`)
   setLoading(true)
   await buyTokens(tokenNumberRef.current.value,_price)
   setLoading(false)
@@ -26,23 +25,27 @@ async function buy(){
 }
 
   useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+    const functionCalls=async()=>{
     
-  
-    return async() => {
-      setAcc(await connect())
-      console.log(acc)
-      setBalance(await fetchUserBalance())
-      setIcoBlanace(await fetchIcoBalance())
-      setTokensSold(await soldTokens())
-      console.log('effect')
-      setPrice(await salePrice()) 
+   
+      setAcc(await connect(),{signal})
+      setBalance(await fetchUserBalance(),{signal})
+      setIcoBlanace(await fetchIcoBalance(),{signal})
+      setTokensSold(await soldTokens(),{signal})
+      setPrice(await salePrice(),{signal})
     }
+    functionCalls()
+ return ()=>{
+  controller.abort()
+ }
   },[acc])
   
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>TOKEN SALE ICO</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Section1 load={loadingBuy} tokenRef={tokenNumberRef} price={price} sold={tokensSold}  buy={buy} icoBalance={icoBalance} connect={connect} address={acc} myTokens={myBalance} /> 
